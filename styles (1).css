@@ -1,0 +1,2342 @@
+/* Importa i font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+/* Variabili per colori e tempi di transizione */
+:root {
+  --bg-primary: #0e0e0e;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2b2b2b;
+  --neon-color: #00E5FF;
+  --text-color: #e0e0e0;
+  --transition-speed: 0.3s;
+  --box-shadow: #0077FF;
+}
+
+/* Imposta il font di base per i testi */
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-primary);
+  color: var(--text-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Titoli con font Orbitron */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animazioni di base */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* HEADER */
+header#intro {
+  text-align: center;
+  padding: 2.5rem 1.25rem; /* 50px/20px */
+  background: linear-gradient(135deg, #000, var(--bg-secondary));
+  border-bottom: 2px solid var(--neon-color);
+  animation: fadeIn 1.5s ease-out;
+}
+
+header#intro img {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px var(--box-shadow);
+  transition: transform 0.5s ease;
+}
+
+header#intro img:hover {
+  transform: scale(1.05);
+}
+
+header#intro h1 {
+  font-size: 2.2rem;
+  margin: 1.25rem 0; /* 20px */
+  color: var(--neon-color);
+  text-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+}
+
+header#intro .intro-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-shadow: 0 0 5px var(--bg-secondary);
+}
+
+/* MAIN CONTAINER */
+main {
+  padding: 1.25rem; /* 20px */
+  animation: slideIn 1s ease-in-out;
+}
+
+/* SEZIONE SUBSCRIBE */
+section#subscribe {
+  text-align: center;
+  margin: 2.5rem auto; /* 40px */
+  padding: 1.875rem 1.25rem; /* 30px/20px */
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--neon-color);
+  border-right: 4px solid var(--neon-color);
+  border-radius: 8px;
+  box-shadow: 0 0 15px var(--box-shadow);
+}
+
+section#subscribe h2 {
+  font-size: 2rem;
+  color: var(--neon-color);
+  margin-bottom: 1.25rem;
+  text-shadow: 0 0 8px var(--neon-color);
+}
+
+section#subscribe form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+section#subscribe input[type="email"] {
+  padding: 0.75rem;
+  margin: 0.625rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  width: 270px;
+}
+
+section#subscribe button {
+  padding: 0.75rem 1.56rem;
+  margin: 0.625rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background: var(--neon-color);
+  color: var(--bg-secondary);
+  cursor: pointer;
+  transition: transform var(--transition-speed) ease, background var(--transition-speed) ease;
+  box-shadow: 0 0 10px var(--neon-color);
+}
+
+section#subscribe button:hover {
+  background: var(--neon-color);
+  transform: scale(1.05);
+}
+
+/* SEZIONE STARTERS */
+section#starters {
+  margin: 2.5rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border: 2px solid var(--neon-color);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 20px var(--box-shadow);
+}
+
+section#starters h2 {
+  font-size: 2rem;
+  color: var(--neon-color);
+  margin-bottom: 0.625rem;
+  text-shadow: 0 0 8px var(--neon-color);
+}
+
+section#starters p {
+  font-size: 1.1rem;
+  margin-bottom: 1.875rem;
+}
+
+/* Container degli Starter */
+.starter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.875rem;
+}
+
+/* Schede Starter */
+.starter {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--neon-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  width: 300px;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.starter:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 30px var(--box-shadow);
+}
+
+.starter img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+  transition: transform var(--transition-speed) ease;
+}
+
+.starter img:hover {
+  transform: scale(1.05);
+}
+
+.starter h3 {
+  font-size: 1.5rem;
+  color: var(--neon-color);
+  margin: 0.938rem 0;
+  text-shadow: 0 0 8px var(--neon-color);
+}
+
+.starter .type {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Tabella statistiche negli Starter */
+.starter table.stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.625rem;
+  font-size: 1rem;
+}
+
+.starter table.stats td {
+  border: 1px solid #444;
+  padding: 0.625rem;
+}
+
+.starter table.stats tr:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+.starter table.stats tr:nth-child(odd) {
+  background: var(--bg-tertiary);
+}
+
+.starter table.stats td:first-child {
+  font-weight: bold;
+}
+
+/* SEZIONI FAQ E PROGRESS */
+section#faq,
+section#progress {
+  margin: 2.5rem auto;
+  padding: 2.5rem;
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--neon-color);
+  border-right: 4px solid var(--neon-color);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 20px var(--box-shadow);
+}
+
+section#faq h2,
+section#progress h2 {
+  font-size: 2rem;
+  color: var(--neon-color);
+  margin-bottom: 1.25rem;
+  text-shadow: 0 0 8px var(--neon-color);
+}
+
+section#faq p,
+section#progress p {
+  font-size: 1.1rem;
+  margin: 0.625rem 0;
+}
+
+
+/* SEZIONE CARRIERA con nuovi colori */
+section#career {
+  margin: 40px auto;
+  padding: 50px 20px;
+  max-width: 1000px;
+  background: linear-gradient(135deg, #663300, #996600, #CC9900);
+  border-left: 4px solid #8B4513;
+  border-right: 4px solid #8B4513;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(139, 69, 19, 0.7);
+  text-align: center;
+}
+
+/* Titolo solido e distintivo */
+section#career h2 {
+  font-size: 2rem;
+  color: #FFD700;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px #8B4513, 0 0 18px #FFD700;
+}
+
+/* Testo introduttivo con tonalità più calde */
+.career-intro {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #F8F8F8;
+  line-height: 1.5;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Lista ordinata con bordi scuri */
+.career-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: left;
+  display: grid;
+  gap: 20px;
+}
+
+/* Elementi della lista con un effetto solido */
+.career-list li {
+  font-size: 1.1rem;
+  padding: 15px;
+  background: linear-gradient(180deg, #4D2600, #8B4513, #D2691E);
+  border-left: 4px solid #FFD700;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.6);
+}
+
+/* Evidenziare le voci principali con oro scuro */
+.career-list li strong {
+  color: #FFD700;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 5px;
+}
+/* Responsive per una struttura armoniosa */
+@media screen and (max-width: 768px) {
+  section#career h2 {
+    font-size: 1.8rem;
+  }
+  .career-intro {
+    font-size: 1rem;
+  }
+  .career-list li {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+
+/* Effetto Magico */
+@keyframes magicFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9) rotateX(20deg);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+/* Effetto Fade-Out Completo */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(6px);
+  }
+}
+
+/* Inizialmente nascosto */
+.phrase {
+  opacity: 0;
+  display: block;
+  transform-origin: center;
+}
+
+/* Appare con effetto magico */
+.visible .phrase:nth-child(1) { animation: magicFade 2s forwards; animation-delay: 0.5s; }
+.visible .phrase:nth-child(2) { animation: magicFade 2s forwards; animation-delay: 2.5s; }
+.visible .phrase:nth-child(3) { animation: magicFade 2s forwards; animation-delay: 4.5s; }
+.visible .phrase:nth-child(4) { animation: magicFade 2s forwards; animation-delay: 6.5s; }
+.visible .phrase:nth-child(5) { animation: magicFade 2s forwards; animation-delay: 8.5s; }
+
+/* Fade-Out Completo quando si esce dalla sezione */
+.hidden .phrase {
+  animation: fadeOut 1.5s forwards;
+}
+
+
+
+/* Stile del Menù */
+#dropdown-menu {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+#menu-toggle {
+  background: var(--neon-color);
+  color: var(--bg-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+
+
+/* Lista del menu inizialmente nascosta */
+#menu-list {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: var(--bg-secondary);
+  padding: 10px;
+  box-shadow: 0 0 10px var(--box-shadow);
+  border-radius: 5px;
+}
+
+/* Stile degli elementi */
+#menu-list li {
+  list-style: none;
+  margin: 10px 0;
+}
+
+#menu-list a {
+  color: var(--neon-color);
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+#menu-list a:hover {
+  background: rgba(255, 204, 0, 0.2);
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  #menu-toggle {
+    font-size: 1rem;
+  }
+  #menu-list a {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+/* Barra di scorrimento sticky */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background: #fa00c4;
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+}
+
+
+/* Contenitore futuristico con taglio diagonale */
+#menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(135deg, #fa00c4 30%, transparent 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid #fa00c4;
+  border-radius: 10px;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 25%, 100% 100%, 25% 100%, 0% 75%);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Barre dell'Hamburger */
+.menu-btn__burger {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Barre sopra e sotto */
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn__burger::before {
+  top: -8px;
+}
+
+.menu-btn__burger::after {
+  top: 8px;
+}
+
+/* Animazione apertura - Trasformazione in "X" */
+.menu-btn.open .menu-btn__burger {
+  background: transparent;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(5px, 5px);
+  background: #fa00c4;
+}
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+  background: #fa00c4;
+}
+
+
+/* Overlay per offuscare la pagina */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Sfocatura scura */
+  backdrop-filter: blur(8px); /* Effetto blur */
+  z-index: 999;
+  display: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Pulsante del menu futuristico con rosa shock */
+#menu-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(135deg, #FF007F 30%, transparent 100%);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid #FF007F;
+  border-radius: 10px;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 25%, 100% 100%, 25% 100%, 0% 75%);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stato Aperto: Bordo e Interno Rosa Shock più intenso */
+.menu-btn.open {
+  background: linear-gradient(135deg, #FF007F 30%, rgba(255, 0, 127, 0.4) 100%);
+  border: 2px solid #FF007F;
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.9);
+}
+
+/* Lista del menu futuristica */
+#menu-list {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: var(--bg-secondary);
+  padding: 12px;
+  box-shadow: 0 0 15px var(--box-shadow);
+  border-radius: 10px;
+}
+
+/* Mostra l'overlay e il menù quando il menu è aperto */
+.menu-open #overlay {
+  display: block;
+  opacity: 1;
+}
+
+.menu-open #menu-list {
+  display: block;
+}
+
+/* Stile elementi */
+#menu-list li {
+  list-style-type: none;
+  margin: 12px 0;
+}
+
+#menu-list a {
+  color: #FF007F;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  transition: background 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+#menu-list a:hover {
+  background: rgba(255, 0, 127, 0.3);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+}
+
+
+
+/* Effetto Hover - Aumenta la profondità */
+#menu-toggle:hover {
+  box-shadow: 0px 6px 20px rgba(255, 0, 127, 0.9), inset 0px -5px 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+}
+
+/* Barre dell'Hamburger */
+.menu-btn__burger {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Barre sopra e sotto */
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn__burger::before {
+  top: -8px;
+}
+
+.menu-btn__burger::after {
+  top: 8px;
+}
+
+/* Animazione apertura - Trasformazione in "X" */
+.menu-btn.open .menu-btn__burger {
+  background: transparent;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(5px, 5px);
+  background: #fa00c4;
+}
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+  background: #fa00c4;
+}
+
+/* Pulsante del menu futuristico con rosa shock */
+#menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 30px; /* Spostato leggermente a destra */
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(135deg, #fa00c4 30%, transparent 100%);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid #FF009F;
+  border-radius: 10px;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 25%, 100% 100%, 25% 100%, 0% 75%);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(1.3);
+}
+
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none; 
+}
+
+
+
+
+/* Contenitore Testo */
+#magic-text {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Testo con effetto neon */
+.phrase {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FF007F;
+  text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F;
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInText 1s ease-in-out forwards;
+}
+
+/* Animazione di ingresso */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Effetto di Pulsazione Neon */
+@keyframes glow {
+  0% { text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F; }
+  50% { text-shadow: 0 0 15px #FF4B9A, 0 0 25px #FF4B9A; }
+  100% { text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F; }
+}
+
+.phrase:nth-child(odd) {
+  animation: glow 1.5s infinite alternate;
+}
+
+/* Effetto Scorrimento */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* Contenitore del Testo */
+#magic-text {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Effetto Gradiente sul Testo */
+.phrase {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #0077FF, #00E5FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px #0077FF, 0 0 20px #00E5FF;
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Effetto Fade In */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Effetto Fade Out */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+
+.scroll-hint {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 35px;
+  font-weight: bold;
+  color: #00E5FF;
+  text-shadow: 0 0 10px #00E5FF, 0 0 20px #0077FF;
+  animation: pulse 1.5s infinite alternate;
+  transition: opacity 0.5s ease-in-out; /* Transizione fluida */
+}
+
+
+
+/* Effetto pulsante */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+/* Sezione Il tuo viaggio inizia qui */
+#journey {
+  background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 100%);
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#journey::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 229, 255, 0.1);
+  z-index: 0;
+}
+
+/* Contenitore centrale */
+#journey .container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Titolo */
+#journey h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #00E5FF;
+  text-shadow: 0 0 8px #00E5FF, 0 0 16px #0077FF;
+  animation: fadeInDown 1s ease-out;
+}
+
+/* Posizione */
+#journey .location {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+/* Stile dell'immagine */
+#journey .city-image {
+  margin: 20px auto;
+}
+
+#journey .city-image img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,229,255, 0.6);
+  animation: fadeIn 1.2s ease-out;
+}
+
+/* Descrizione */
+#journey .description p {
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Evidenziazione */
+#journey .highlight {
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+/* Animazioni */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+
+/* Stile del bottone */
+#menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 30px; /* Spostato leggermente a destra */
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(135deg, #fa00c4 30%, transparent 100%);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid #FF009F;
+  border-radius: 10px;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 25%, 100% 100%, 25% 100%, 0% 75%);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex; /* L'abbiamo già definito sopra come none, qui vale quando è attivato */
+  align-items: center;
+  justify-content: center;
+  filter: brightness(1.3);
+}
+
+
+
+
+/* Sezione iscrizione */
+#subscribe {
+  text-align: center;
+  padding: 40px 20px;
+  background: #1c1c1c;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+}
+
+/* Titolo */
+#subscribe h2 {
+  font-size: 24px;
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+/* Testo evidenziato */
+.highlight {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00E5FF;
+}
+
+/* Form */
+#subscribe input {
+  padding: 10px;
+  font-size: 16px;
+  width: 250px;
+  border: 2px solid #FF009F;
+  border-radius: 5px;
+}
+
+#subscribe button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background: #FA00C4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#subscribe button:hover {
+  background: #FF009F;
+}
+
+/* Stile immagine della cartuccia */
+.cartridge-image {
+  margin-top: 20px;
+}
+
+.cartridge-image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
+}
+
+
+
+
+#subscribe input {
+  padding: 12px;
+  font-size: 18px;
+  width: 260px;
+  border: 2px solid #FF009F;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+
+
+
+/* Effetto neon al passaggio */
+#subscribe input:focus {
+  border-color: var(--box-shadow);
+  box-shadow: var(--box-shadow);
+}
+
+
+
+/* Contenitore evidenziato */
+
+
+/* Stile pulsante */
+#btn1 {
+  padding: 12px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00E5FF 30%, #0077FF 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 0 5px #00E5FF;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+  animation: pulse1 1.5s infinite alternate;
+}
+
+/* Effetto hover per ingrandimento */
+#btn1:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.9);
+}
+
+/* Animazione pulse1 */
+@keyframes pulse1 {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+  }
+  100% {
+    transform: scale(1.05);
+    box-shadow: 0 0 22px rgba(0, 119, 255, 0.9);
+  }
+}
+
+
+
+/* Contenitore prestigioso */
+/* Contenitore prestigioso */
+.win-box {
+  background: linear-gradient(135deg, #FFD700, #FFAA00);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  max-width: 650px;
+  margin: 25px auto;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.7);
+  overflow: hidden;
+}
+
+/* Effetto Shine */
+.win-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 3s infinite linear;
+}
+
+/* Animazione Shine */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+h3{
+  font-size: 20px;
+}
+
+
+
+/* Sezione Episodi con un tema spaziale-elettrico */
+#episodes-info {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #1A1A40, #3B008A, #6F00FF);
+  color: white;
+  border-radius: 12px;
+  box-shadow: inset 0 0 30px rgba(96, 0, 255, 0.3), 
+              0 0 40px rgba(100, 0, 200, 0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Titolo principale con effetto luminoso */
+#episodes-info h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #C0C0C0; /* Argento per massimo contrasto */
+  text-shadow: 0 0 12px #FFFFFF, 0 0 24px #6F00FF, 0 0 36px #3B008A;
+  margin-bottom: 20px;
+}
+
+/* Contenitore dettagli episodi con look futuristico */
+.episode-details {
+  background: linear-gradient(180deg, #252525, #333366, #4646B6);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(100, 0, 255, 0.5);
+}
+
+/* Sottotitoli con colori elettrici */
+.episode-details h3 {
+  font-size: 24px;
+  color: #C0C0C0;
+  text-shadow: 0px 0px 12px rgba(192, 192, 192, 0.9);
+  border-bottom: 2px solid rgba(192, 192, 192, 0.7);
+  padding-bottom: 5px;
+}
+
+/* Testo principale con contrasto elevato */
+.episode-details p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #f0f0f0;
+}
+
+
+/* Sezione meccaniche */
+#mechanics {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #1c1c1c, #3a005f);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+}
+
+/* Titolo con effetto neon */
+#mechanics h2 {
+  font-size: 28px;
+  color: #FFD700;
+  text-shadow: 0 0 8px #FFD700, 0 0 16px #FF009F;
+  margin-bottom: 20px;
+}
+
+/* Testo introduttivo */
+.mechanics-intro {
+  font-size: 18px;
+  color: #ddd;
+  max-width: 750px;
+  margin: 0 auto 30px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Sezione meccaniche */
+#mechanics {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #1c1c1c, #3a005f);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fuoco animato */
+.fire-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.fire {
+  width: 50px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255,69,0,1) 30%, rgba(255,140,0,0.7) 70%);
+  animation: flames 1.5s infinite alternate ease-in-out;
+  margin: 0 10px;
+  filter: blur(10px);
+}
+
+/* Animazione fiamme */
+@keyframes flames {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Effetto neon */
+.icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #FFD700;
+  text-shadow: 0 0 8px #FF4500;
+}
+
+
+
+
+
+
+/* Titolo principale con effetto fuoco */
+#mechanics h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 12px #FF4500, 0 0 24px #FF0000;
+  position: relative;
+}
+
+
+
+
+/* Singola fiamma */
+.fire {
+  width: 20px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255,69,0,1) 30%, rgba(255,140,0,0.7) 70%);
+  animation: flames 1.5s infinite alternate ease-in-out;
+  filter: blur(6px);
+}
+
+/* Animazione fiamme */
+@keyframes flames {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+
+/* Pulsante Info */
+#info-button {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  padding: 25px 25px;
+  font-size: 25px;
+  font-weight: bold;
+  background: transparent;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+/* Icona Font Awesome */
+#info-button i {
+  font-size: 30px;
+}
+
+
+
+
+
+.starter-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.starter {
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.starter:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.starter img {
+  width: 120px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.starter .type {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 🔥 Stile per Pokémon di tipo Fuoco */
+.starter[data-type="fire"] {
+  background: linear-gradient(135deg, #ff6b6b, #d63447);
+  border: 2px solid #b71c1c;
+  color: #fff;
+}
+
+/* 🍃 Stile per Pokémon di tipo Erba */
+.starter[data-type="grass"] {
+  background: linear-gradient(135deg, #48c774, #2d6a4f);
+  border: 2px solid #1b5e20;
+  color: #fff;
+}
+
+/* 💧 Stile per Pokémon di tipo Acqua */
+.starter[data-type="water"] {
+  background: linear-gradient(135deg, #3498db, #1b4f72);
+  border: 2px solid #0a3d62;
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+.starter[data-type="fire"] img {
+  filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.8));
+}
+.starter[data-type="grass"] img {
+  filter: drop-shadow(0 0 10px rgba(48, 199, 116, 0.8));
+}
+.starter[data-type="water"] img {
+  filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.8));
+}
+
+
+
+.starter[data-type="fire"] .stats {
+  background: rgba(255, 255, 255, 0.15); /* Più contrasto */
+  border: 2px solid #b71c1c;
+}
+
+.starter[data-type="grass"] .stats {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #1b5e20;
+}
+
+.starter[data-type="water"] .stats {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #0a3d62;
+}
+
+.stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.stats tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stats td {
+  padding: 8px;
+  font-weight: bold;
+}
+
+/* 🔥 Stile speciale per i valori delle statistiche */
+.stats td:nth-child(2) {
+  text-align: center;
+  font-size: 18px;
+  color: #ffdd57;
+  font-weight: bold;
+}
+
+/* 🍃 Stile per Pokémon di tipo Erba */
+.starter[data-type="grass"] .stats td:nth-child(2) {
+  color: #48c774;
+}
+
+/* 💧 Stile per Pokémon di tipo Acqua */
+.starter[data-type="water"] .stats td:nth-child(2) {
+  color: #3498db;
+}
+
+/* Effetto hover sulla tabella */
+.stats tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #1a1a1a, #4a4a4a); /* Sfondo più contrastato */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stats tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stats td {
+  padding: 8px;
+  font-weight: bold;
+  color: #ffffff; /* Testo più chiaro per maggiore leggibilità */
+}
+
+/* 🔥 Stile per evidenziare le statistiche */
+.stats td:nth-child(2) {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffdd57; /* Giallo acceso per far risaltare i valori */
+}
+
+/* 🍃 Per Pokémon di tipo Erba */
+.starter[data-type="grass"] .stats td:nth-child(2) {
+  color: #48c774;
+}
+
+/* 💧 Per Pokémon di tipo Acqua */
+.starter[data-type="water"] .stats td:nth-child(2) {
+  color: #3498db;
+}
+
+/* Effetto hover per una maggiore dinamicità */
+.stats tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+
+.starter-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.starter {
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.starter:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.starter img {
+  width: 160px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.starter .type {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 🔥 Stile per Pokémon di tipo Fuoco */
+.starter[data-type="fire"] {
+  background: linear-gradient(135deg, #ff6b6b, #d63447);
+  border: 2px solid #b71c1c;
+  color: #fff;
+}
+
+/* 🍃 Stile per Pokémon di tipo Erba */
+.starter[data-type="grass"] {
+  background: linear-gradient(135deg, #48c774, #2d6a4f);
+  border: 2px solid #1b5e20;
+  color: #fff;
+}
+
+/* 💧 Stile per Pokémon di tipo Acqua */
+.starter[data-type="water"] {
+  background: linear-gradient(135deg, #3498db, #1b4f72);
+  border: 2px solid #0a3d62;
+  color: #fff;
+}
+
+/* ✨ Stile migliorato per la Tabella delle Statistiche */
+.stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #2a2a2a, #5a5a5a); /* Sfondo con contrasto maggiore */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.stats tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stats td {
+  padding: 10px;
+  font-weight: bold;
+  color: #ffffff; /* Testo più chiaro per maggiore leggibilità */
+}
+
+/* 🔥 Colore dei valori delle statistiche */
+.stats tr:nth-child(2) {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffdd57; /* Giallo acceso per evidenziare le statistiche */
+}
+
+/* 🍃 Colore per Pokémon di tipo Erba */
+.starter[data-type="grass"] .stats td:nth-child(2) {
+  color: #48c774;
+}
+
+/* 💧 Colore per Pokémon di tipo Acqua */
+.starter[data-type="water"] .stats td:nth-child(2) {
+  color: #3498db;
+}
+
+/* Effetto hover per maggiore dinamicità */
+.stats tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+
+
+
+
+/* Animazione del bagliore */
+@keyframes flameEffect {
+  0% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1), 
+                 0 0 25px rgba(255, 140, 0, 0.9), 
+                 0 0 40px rgba(255, 69, 0, 0.7);
+  }
+  100% {
+    text-shadow: 0 0 25px rgba(255, 255, 255, 1), 
+                 0 0 35px rgba(255, 165, 0, 1), 
+                 0 0 50px rgba(255, 69, 0, 0.9);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.starter[data-type="fire"] {
+  background: linear-gradient(45deg, #ff4500, #ff8c00, #ffcc00);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+  text-align: center;
+  animation: flames 2s infinite alternate;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effetto bagliore per il nome */
+.starter[data-type="fire"] h3 {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+  background: rgba(255, 69, 0, 0.8);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 4px 4px 15px rgba(255, 255, 255, 1), 
+               0 0 15px rgba(255, 140, 0, 0.9);
+  animation: glow 1.5s infinite alternate;
+}
+
+/* Animazione per il bagliore del nome */
+@keyframes glow {
+  0% {
+    text-shadow: 4px 4px 15px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 140, 0, 0.9);
+  }
+  100% {
+    text-shadow: 4px 4px 25px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 165, 0, 1);
+  }
+}
+
+/* Effetto fiamme in movimento */
+@keyframes flames {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
+  }
+}
+
+/* Stile della tabella senza effetti di fiamma */
+
+
+.starter[data-type="fire"] .stats {
+  background: rgba(20, 20, 20, 0.9); /* Nero intenso con leggera trasparenza */
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 69, 0, 0.8); /* Bordo rosso fuoco per contrasto */
+  box-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
+}
+
+/* Stile per le celle della tabella */
+.starter[data-type="fire"] .stats td {
+  color: #ffdd57; /* Giallo brillante per alta visibilità */
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 69, 0, 0.6);
+}
+
+/* Effetto bagliore per il testo */
+.starter[data-type="fire"] .stats td:first-child {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 140, 0, 0.8), 0 0 15px rgba(255, 69, 0, 0.6);
+}
+
+/* Animazione pulsante per maggiore impatto visivo */
+@keyframes glowStats {
+  0% {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 69, 0, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 1), 0 0 18px rgba(255, 140, 0, 0.8);
+  }
+}
+
+.starter[data-type="fire"] .stats td {
+  animation: glowStats 2s infinite alternate ease-in-out;
+}
+
+
+.starter[data-type="fire"] img {
+  display: block;
+  margin: 0 auto;
+  width: 160px; /* Adatta la dimensione */
+  filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.8))
+          drop-shadow(0 0 30px rgba(255, 140, 0, 0.7))
+          drop-shadow(0 0 40px rgba(255, 165, 0, 0.6));
+  animation: flameGlow 2s infinite alternate ease-in-out;
+}
+
+/* Animazione per il bagliore */
+@keyframes flameGlow {
+  0% {
+    filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.8))
+            drop-shadow(0 0 30px rgba(255, 140, 0, 0.7));
+  }
+  100% {
+    filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.8))
+            drop-shadow(0 0 40px rgba(255, 165, 0, 0.9));
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap');
+
+
+
+/* 💨🔥 Effetto combinato di movimento + fiamme */
+@keyframes speedFlames {
+  0% {
+    text-shadow: 3px 0px 10px rgba(255, 255, 255, 1),
+                 6px 0px 20px rgba(255, 140, 0, 0.8);
+    transform: skewX(-8deg);
+  }
+  100% {
+    text-shadow: 8px 0px 20px rgba(255, 255, 255, 1),
+                 16px 0px 30px rgba(255, 140, 0, 1),
+                 24px 0px 45px rgba(255, 69, 0, 0.9),
+                 32px 0px 55px rgba(255, 0, 0, 0.8);
+    transform: skewX(-12deg) translateX(5px);
+  }
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+.starter[data-type="grass"] {
+  background: linear-gradient(45deg, #228B22, #32CD32, #7FFF00);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(50, 205, 50, 0.8);
+  text-align: center;
+  animation: natureGlow 2s infinite alternate;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effetto bagliore per il nome */
+
+/* 🌿✨ Effetto movimento e energia vegetale */
+@keyframes naturalSpeed {
+  0% {
+    text-shadow: 0 0 10px rgba(144, 238, 144, 1),
+                 0 0 25px rgba(0, 128, 0, 0.8);
+    transform: skewX(-8deg);
+  }
+  100% {
+    text-shadow: 4px 0px 30px rgba(144, 238, 144, 1),
+                 8px 0px 40px rgba(0, 255, 0, 1),
+                 12px 0px 50px rgba(0, 128, 0, 0.9);
+    transform: skewX(-15deg) translateX(5px);
+  }
+}
+
+/* 🌱💨 Effetto vento e foglie in movimento */
+@keyframes natureGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(34, 139, 34, 0.9);
+  }
+}
+
+/* Bordo energico */
+.starter[data-type="grass"] img {
+  display: block;
+  margin: 0 auto;
+  width: 160px;
+  filter: drop-shadow(0 0 15px rgba(50, 205, 50, 0.8))
+          drop-shadow(0 0 25px rgba(0, 128, 0, 0.7));
+  animation: leafGlow 1.5s infinite alternate ease-in-out;
+}
+
+/* 🌿🍃 Effetto bagliore verde */
+@keyframes leafGlow {
+  0% {
+    filter: drop-shadow(0 0 15px rgba(50, 205, 50, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 25px rgba(0, 255, 0, 0.9));
+  }
+}
+
+
+#grass {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+
+  /* Colore forte per massimo contrasto */
+  color: #ffffff;
+  background: rgba(0, 128, 0, 0.9); /* Verde scuro per separarlo dal fondo */
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+
+  /* Bordo luminoso per evidenziare il testo */
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 1), 
+              0px 0px 25px rgba(144, 238, 144, 0.9), 
+              0px 0px 35px rgba(0, 255, 0, 1);
+}
+
+
+#fire {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+
+  /* Base scura per separarlo dallo sfondo infuocato */
+  background: rgba(139, 0, 0, 0.85); /* Rosso scuro intenso */
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+
+  /* Bagliore luminoso e fuoco */
+  color: #ffffff;
+  box-shadow: 0px 0px 20px rgba(255, 140, 0, 1),
+              0px 0px 30px rgba(255, 69, 0, 0.9),
+              0px 0px 40px rgba(255, 0, 0, 0.8);
+
+  
+}
+
+/* 🔥💨 Effetto turbo + bagliore infuocato */
+
+.starter[data-type="grass"] .stats td:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+  /* Ombra profonda che circonda ogni lettera */
+  text-shadow: 0px 0px 8px rgba(34, 139, 34, 1), 
+               0px 0px 12px rgba(50, 205, 50, 0.9), 
+               0px 0px 18px rgba(0, 128, 0, 0.8);
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+.starter[data-type="water"] {
+  background: linear-gradient(45deg, #0044cc, #0088ff, #00ccff);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 128, 255, 0.8);
+  text-align: center;
+  animation: waterFlow 2s infinite alternate;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 💦 Effetto onde fluide */
+@keyframes waterFlow {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(0, 192, 255, 0.9);
+  }
+}
+
+/* 💧💡 Effetto bagliore blu per il nome */
+#water {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+
+  background: rgba(0, 50, 150, 0.85); /* Base blu scura per massimo contrasto */
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+
+  /* Scia di acqua luminosa */
+  color: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 255, 255, 1),
+              0px 0px 30px rgba(0, 128, 255, 0.9),
+              0px 0px 40px rgba(0, 64, 255, 0.8);
+
+  animation: aquaGlow 1.5s infinite alternate ease-in-out;
+}
+
+/* 🌊💨 Pulsazione liquida */
+
+/* 🌊💦 Effetto acquatico sulle scritte della tabella */
+.starter[data-type="water"] .stats td:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+  /* Ombra blu avvolgente */
+  text-shadow: 0px 0px 10px rgba(0, 128, 255, 1),
+               0px 0px 20px rgba(0, 192, 255, 0.9),
+               0px 0px 30px rgba(0, 64, 255, 0.8);
+}
+
+
+.starter[data-type="water"] {
+  background: url('https://example.com/water-texture.jpg') no-repeat center;
+  background-size: cover;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 128, 255, 0.8);
+  text-align: center;
+  animation: waterFlow 3s infinite alternate ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌊💨 Animazione onde fluide */
+@keyframes waterFlow {
+  0% {
+    background-position: center 0px;
+  }
+  100% {
+    background-position: center 30px;
+  }
+}
+
+/* 💦 Effetto acquatico sulle scritte della tabella */
+.starter[data-type="water"] .stats td:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+  /* Ombra blu intensa che avvolge il testo */
+  text-shadow: 0px 0px 10px rgba(0, 128, 255, 1),
+               0px 0px 15px rgba(0, 192, 255, 0.9),
+               0px 0px 25px rgba(0, 64, 255, 0.8);
+}
+
+
+.starter[data-type="water"] {
+  background: url('https://example.com/water-texture.jpg') no-repeat center;
+  background-size: cover;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 128, 255, 0.8);
+  text-align: center;
+  animation: waterFlow 3s infinite alternate ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌊💨 Animazione onde fluide */
+@keyframes waterFlow {
+  0% {
+    background-position: center 0px;
+  }
+  100% {
+    background-position: center 30px;
+  }
+}
+
+/* 💦 Effetto acquatico sulle scritte della tabella */
+.starter[data-type="water"] .stats td:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+  /* Ombra blu intensa che avvolge il testo */
+  text-shadow: 0px 0px 10px rgba(0, 128, 255, 1),
+               0px 0px 15px rgba(0, 192, 255, 0.9),
+               0px 0px 25px rgba(0, 64, 255, 0.8);
+}
+
+.starter[data-type="water"] .stats {
+  background: linear-gradient(180deg, #00224D, #005DAA, #00AEEF);
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 128, 255, 0.8);
+  box-shadow: inset 0 0 15px rgba(0, 128, 255, 0.6), 
+              0 0 20px rgba(0, 192, 255, 0.8);
+  animation: waveFlow 3s infinite alternate ease-in-out;
+}
+
+/* 🌊💦 Movimento delle onde */
+
+/* 💧 Effetto riflesso blu sulle scritte */
+.starter[data-type="water"] .stats td:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+  /* Ombra blu che avvolge le lettere */
+  text-shadow: 0px 0px 10px rgba(0, 128, 255, 1),
+               0px 0px 15px rgba(0, 192, 255, 0.9),
+               0px 0px 25px rgba(0, 64, 255, 0.8);
+}
+
+.starter[data-type="water"] {
+  background: linear-gradient(180deg, #00224D, #005DAA, #00AEEF);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: inset 0 0 30px rgba(0, 128, 255, 0.5), 
+              0 0 20px rgba(0, 192, 255, 0.8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Effetto onde leggere */
+  animation: waveEffect 3s infinite alternate ease-in-out;
+}
+
+
+
+/* 🌊💦 Ombra acquatica sulle scritte delle statistiche */
+.starter[data-type="water"] .stats td:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+  /* Ombra blu intensa che avvolge completamente il testo */
+  text-shadow: 0px 0px 10px rgba(0, 128, 255, 1),
+               0px 0px 20px rgba(0, 192, 255, 0.9),
+               0px 0px 30px rgba(0, 64, 255, 0.8);
+}
+
+
+
+.starter[data-type="grass"] {
+  background: linear-gradient(180deg, #004d00, #008000, #32CD32);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: inset 0 0 30px rgba(0, 128, 0, 0.5), 
+              0 0 20px rgba(50, 205, 50, 0.8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: natureFlow 3s infinite alternate ease-in-out;
+}
+
+/* 🌿💨 Effetto vento e foglie in movimento */
+
+
+/* 🌿✨ Aura vegetale attorno al Pokémon */
+.starter[data-type="grass"] img {
+  display: block;
+  margin: 0 auto;
+  width: 160px;
+  filter: drop-shadow(0 0 15px rgba(50, 205, 50, 0.8)) 
+          drop-shadow(0 0 25px rgba(0, 128, 0, 0.7));
+  animation: leafGlow 1.5s infinite alternate ease-in-out;
+}
+
+/* 🌱💡 Bagliore verde pulsante */
+@keyframes leafGlow {
+  0% {
+    filter: drop-shadow(0 0 15px rgba(50, 205, 50, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 25px rgba(0, 255, 0, 0.9));
+  }
+}
+
+
+
+.starter[data-type="fire"] {
+  background: linear-gradient(180deg, #7F0000, #FF4500, #FF8C00);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: inset 0 0 30px rgba(255, 69, 0, 0.5), 
+              0 0 20px rgba(255, 140, 0, 0.8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fireFlow 3s infinite alternate ease-in-out;
+}
+
+/* 🔥💨 Effetto fiamme in movimento */
+@keyframes fireFlow {
+  0% {
+    box-shadow: inset 0 0 20px rgba(255, 69, 0, 0.6), 0 0 15px rgba(255, 140, 0, 0.8);
+  }
+  100% {
+    box-shadow: inset 0 0 30px rgba(255, 69, 0, 0.8), 0 0 25px rgba(255, 140, 0, 1);
+  }
+}
+
+/* 🔥✨ Aura fiammeggiante attorno al Pokémon */
+.starter[data-type="fire"] img {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.8)) 
+          drop-shadow(0 0 25px rgba(255, 140, 0, 0.7));
+  animation: flameGlow 1.5s infinite alternate ease-in-out;
+}
+
+/* 🔥🔥 Bagliore rosso pulsante */
+@keyframes flameGlow {
+  0% {
+    filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.9));
+  }
+}
+
+
+
+#progress {
+  font-family: Arial, sans-serif;
+  color: #0ff;
+  background: #121212;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #0ff, #00f);
+  transition: width 1s ease-in-out;
+}
+
+
+
+/* Stile generale */
+#w {
+  font-family: 'Orbitron', sans-serif;
+  color: #0ff;
+  background: radial-gradient(circle, rgba(10,10,30,1) 20%, rgba(0,0,0,1) 100%);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  text-align: center;
+  
+}
+
+/* Animazioni fluide */
+.job-listings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.job {
+  width: 90%;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.job:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+/* Testo luminoso */
+.job h3 {
+  color: #0ff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.job p {
+  margin: 10px 0;
+}
+
+.strong {
+  color: #ff0;
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+}
+
+#footer {
+  font-size: 8px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  padding: 15px;
+  color: #0ff;
+  background: linear-gradient(90deg, rgba(20,20,50,1), rgba(0,0,0,1));
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+
+/* Stile dei sottotitoli */
+li span {
+  font-family: 'Orbitron', sans-serif;
+  color: #0ff;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+  display: block;
+  margin-bottom: 5px;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* Effetto hover */
+li span:hover {
+  color: #ff0;
+  text-shadow: 0 0 12px rgba(255, 255, 0, 0.8);
+  transform: scale(1.1);
+}
+
+
+#commit{
+  font-family: 'Orbitron', sans-serif;
+  color: #ff0;
+  font-size: 1.4em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(255, 255, 0, 0.8);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(255,255,0,0.3), rgba(255,165,0,0.5));
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.6);
+  display: inline-block;
+}
+
+
+
+#staytuned {
+  font-family: 'Orbitron', sans-serif;
+  
+
+  color: #fff;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+
+  
+  
+  
+}
+
+
+
+
+
+/* Stile generale */
+#progress {
+  font-family: 'Orbitron', sans-serif;
+  color: #0ff;
+  background: radial-gradient(circle, rgba(20,20,50,1) 20%, rgba(0,0,0,1) 100%);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  text-align: center;
+}
+
+h2 {
+  text-transform: uppercase;
+
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+}
+
+/* Ultimo commit */
+
+
+/* Lista avanzamento */
+.progress-list {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 20px 0;
+  font-size: 1.2em;
+  
+}
+
+/* Descrizioni */
+.desc {
+  font-size: 0.5em;
+  color: #aaa;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+/* Barre di avanzamento */
+.progress-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  height: 14px;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #0ff, #00f);
+  transition: width 1s ease-in-out;
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.8);
+}
+
+/* Effetti di luce */
+.progress:hover {
+  filter: brightness(1.5);
+}
